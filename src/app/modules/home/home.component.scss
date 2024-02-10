@@ -21,3 +21,9 @@
     height: 230vmin;
   }
 }
+
+@media (max-width: 1000px) {
+  .grid  {
+    height: 100vmin;
+  }
+}
