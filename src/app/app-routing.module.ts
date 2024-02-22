@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './modules/home/home.component';
 import { AuthGuard } from './guards/auth-guard.service';
+import { ToolbarNavigationComponent } from './shared/components/toolbar-navigation/toolbar-navigation.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,15 @@ const routes: Routes = [
       import('./modules/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
-      canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'products',
+    loadChildren: () =>
+      import('./modules/products/products.module').then(
+        (m) => m.ProductsModule
+      ),
+    canActivate: [AuthGuard],
   },
 ];
 
@@ -28,3 +37,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
+

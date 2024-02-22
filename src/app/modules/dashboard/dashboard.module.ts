@@ -31,7 +31,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ToastModule,
     ChartModule,
     // Shared
-    SharedModule
+    SharedModule,
   ],
   providers: [MessageService, CookieService],
 })
