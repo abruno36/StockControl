@@ -25,7 +25,7 @@ export class ProductsDataTransferService {
       )
       .subscribe({
         next: (response) => {
-          if (response !== undefined && response.length > 0){
+          if (response) {
             this.productsDatas = response;
           }
         },
@@ -33,4 +33,3 @@ export class ProductsDataTransferService {
     return this.productsDatas;
   }
 }
-

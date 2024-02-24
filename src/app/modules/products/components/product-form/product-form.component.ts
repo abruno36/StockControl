@@ -15,7 +15,7 @@ import { ProductsService } from 'src/app/services/products/products.service';
 })
 export class ProductFormComponent implements OnInit, OnDestroy {
   private readonly destroy$: Subject<void> = new Subject();
-  public categoriesDatas: Array<any> = [];
+  public categoriesDatas: Array<GetCategoriesResponse> = [];
   public selectedCategory: Array<{ name: string; code: string }> = [];
   public addProductForm = this.formBuilder.group({
     name: ['', Validators.required],

@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatCardModule} from '@angular/material/card';
 import { CookieService } from 'ngx-cookie-service';
 
 import { CardModule } from 'primeng/card';
@@ -16,7 +14,6 @@ import { MessageService } from 'primeng/api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './modules/home/home.component';
-
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -31,8 +28,6 @@ import { HomeComponent } from './modules/home/home.component';
     InputTextModule,
     ButtonModule,
     ToastModule,
-    MatFormFieldModule,
-    MatCardModule
   ],
   providers: [CookieService, MessageService],
   bootstrap: [AppComponent],

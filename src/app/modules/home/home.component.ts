@@ -1,7 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SignupUserRequest } from 'src/app/models/interfaces/user/SignupUserRequest';
-import { SignupUserResponse } from 'src/app/models/interfaces/user/SignupUserResponse';
 import { AuthRequest } from 'src/app/models/interfaces/user/auth/AuthRequest';
 import { UserService } from 'src/app/services/user/user.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -39,33 +38,34 @@ export class HomeComponent implements OnDestroy {
 
   onSubmitLoginForm(): void {
     if (this.loginForm.value && this.loginForm.valid) {
-      this.userService.authUser(this.loginForm.value as AuthRequest)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (response) => {
-          if (response) {
-            this.cookieService.set('USER_INFO', response?.token);
-            this.loginForm.reset();
-            this.router.navigate(['/dashboard']);
+      this.userService
+        .authUser(this.loginForm.value as AuthRequest)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe({
+          next: (response) => {
+            if (response) {
+              this.cookieService.set('USER_INFO', response?.token);
+              this.loginForm.reset();
+              this.router.navigate(['/dashboard']);
 
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Sucesso',
+                detail: `Bem vindo de volta ${response?.name}!`,
+                life: 2000,
+              });
+            }
+          },
+          error: (err) => {
             this.messageService.add({
-              severity: 'success',
-              summary: 'Sucesso',
-              detail: `Bem vindo de volta ${response?.name}!`,
+              severity: 'error',
+              summary: 'Erro',
+              detail: `Erro ao fazer o login!`,
               life: 2000,
             });
-          }
-        },
-        error: (err) => {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Erro',
-            detail: `Erro ao fazer o login!`,
-            life: 2000,
-          });
-          console.log(err);
-        },
-      });
+            console.log(err);
+          },
+        });
     }
   }
 
@@ -104,5 +104,4 @@ export class HomeComponent implements OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
   }
-
 }

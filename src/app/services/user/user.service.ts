@@ -6,10 +6,10 @@ import { SignupUserRequest } from 'src/app/models/interfaces/user/SignupUserRequ
 import { SignupUserResponse } from 'src/app/models/interfaces/user/SignupUserResponse';
 import { AuthRequest } from 'src/app/models/interfaces/user/auth/AuthRequest';
 import { AuthResponse } from 'src/app/models/interfaces/user/auth/AuthResponse';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   private API_URL = environment.API_URL;

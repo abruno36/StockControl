@@ -9,21 +9,11 @@
 @media screen and (min-width: 1400px) {
   .grid {
     background-position: top;
-    height: 100vmin;
   }
 }
 
-@media (max-width: 620px) {
-  .grid  {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 230vmin;
-  }
-}
-
-@media (max-width: 1000px) {
-  .grid  {
-    height: 100vmin;
+@media screen and (max-width: 1000px) {
+  .grid {
+    height: 100vmax;
   }
 }
